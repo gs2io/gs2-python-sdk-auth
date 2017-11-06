@@ -26,9 +26,9 @@ class CreateTimeOnetimeTokenResult(object):
         :type response: dict
         """
         
-        self.__token = unicode(response['token']) if 'token' in response.keys() or response['token'] is not None else None
+        self.__token = unicode(response['token']) if 'token' in response.keys() and response['token'] is not None else None
         
-        self.__expire = int(response['expire']) if 'expire' in response.keys() or response['expire'] is not None else None
+        self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
 
     def get_token(self):
         """

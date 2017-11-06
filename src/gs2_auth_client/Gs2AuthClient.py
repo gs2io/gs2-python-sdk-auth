@@ -32,7 +32,7 @@ class Gs2AuthClient(AbstractGs2Client):
         :param region: GS2リージョン
         :type region: str
         """
-        super(Gs2MatchmakingClient, self).__init__(credential, region)
+        super(Gs2AuthClient, self).__init__(credential, region)
 
 
     def login(self, request):

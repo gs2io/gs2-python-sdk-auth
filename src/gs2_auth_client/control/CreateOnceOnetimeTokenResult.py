@@ -26,7 +26,7 @@ class CreateOnceOnetimeTokenResult(object):
         :type response: dict
         """
         
-        self.__token = unicode(response['token']) if 'token' in response.keys() or response['token'] is not None else None
+        self.__token = unicode(response['token']) if 'token' in response.keys() and response['token'] is not None else None
 
     def get_token(self):
         """
