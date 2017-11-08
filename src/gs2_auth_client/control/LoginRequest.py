@@ -51,8 +51,6 @@ class LoginRequest(Gs2BasicRequest):
         :param service_id: ログインするサービスID
         :type service_id: unicode
         """
-        if not isinstance(service_id, unicode):
-            raise TypeError(type(service_id))
         self.__service_id = service_id
 
     def with_service_id(self, service_id):
@@ -80,8 +78,6 @@ class LoginRequest(Gs2BasicRequest):
         :param user_id: ログインするユーザのID
         :type user_id: unicode
         """
-        if not isinstance(user_id, unicode):
-            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):

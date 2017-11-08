@@ -45,3 +45,16 @@ class CreateTimeOnetimeTokenResult(object):
         :rtype: int
         """
         return self.__expire
+
+    def to_dict(self):
+        """
+        辞書配列に変換
+        :return: 辞書配列
+        :rtype: dict
+        """
+        return { 
+            'token': self.__token,
+        
+            'expire': self.__expire,
+        
+        }

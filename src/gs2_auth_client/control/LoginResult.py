@@ -65,3 +65,20 @@ class LoginResult(object):
         :rtype: int
         """
         return self.__expire
+
+    def to_dict(self):
+        """
+        辞書配列に変換
+        :return: 辞書配列
+        :rtype: dict
+        """
+        return { 
+            'token': self.__token,
+        
+            'serviceId': self.__service_id,
+        
+            'userId': self.__user_id,
+        
+            'expire': self.__expire,
+        
+        }

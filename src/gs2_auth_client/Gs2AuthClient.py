@@ -35,37 +35,6 @@ class Gs2AuthClient(AbstractGs2Client):
         super(Gs2AuthClient, self).__init__(credential, region)
 
 
-    def login(self, request):
-        """
-        ログイン処理を実行します<br>
-        <br>
-        :param request: リクエストパラメータ
-        :type request: gs2_auth_client.control.LoginRequest.LoginRequest
-        :return: 結果
-        :rtype: gs2_auth_client.control.LoginResult.LoginResult
-        """
-        body = { 
-            "serviceId": request.get_service_id(),
-            "userId": request.get_user_id(),
-        }
-
-        headers = { 
-        }
-        from gs2_auth_client.control.LoginRequest import LoginRequest
-
-        from gs2_auth_client.control.LoginResult import LoginResult
-        return LoginResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/login",
-            service=self.ENDPOINT,
-            module=LoginRequest.Constant.MODULE,
-            function=LoginRequest.Constant.FUNCTION,
-            body=body,
-            headers=headers
-        ))
-
-
-
-
     def create_once_onetime_token(self, request):
         """
         実行回数制限付きワンタイムトークンを発行します<br>
@@ -100,6 +69,68 @@ class Gs2AuthClient(AbstractGs2Client):
 
 
 
+    def create_time_onetime_token(self, request):
+        """
+        1回のみ実行を許可するワンタイムトークンを発行します<br>
+        このトークンはスタミナの回復処理など、有効期間内だからといって何度も実行されたくない処理を1度だけ許可したい場合に発行します。<br>
+        <br>
+        :param request: リクエストパラメータ
+        :type request: gs2_auth_client.control.CreateTimeOnetimeTokenRequest.CreateTimeOnetimeTokenRequest
+        :return: 結果
+        :rtype: gs2_auth_client.control.CreateTimeOnetimeTokenResult.CreateTimeOnetimeTokenResult
+        """
+        body = { 
+            "scriptName": request.get_script_name(),
+        }
+
+        headers = { 
+        }
+        from gs2_auth_client.control.CreateTimeOnetimeTokenRequest import CreateTimeOnetimeTokenRequest
+
+        from gs2_auth_client.control.CreateTimeOnetimeTokenResult import CreateTimeOnetimeTokenResult
+        return CreateTimeOnetimeTokenResult(self._do_post_request(
+            url=Gs2Constant.ENDPOINT_HOST + "/onetime/time/token",
+            service=self.ENDPOINT,
+            module=CreateTimeOnetimeTokenRequest.Constant.MODULE,
+            function=CreateTimeOnetimeTokenRequest.Constant.FUNCTION,
+            body=body,
+            headers=headers
+        ))
+
+
+
+
+    def login(self, request):
+        """
+        ログイン処理を実行します<br>
+        <br>
+        :param request: リクエストパラメータ
+        :type request: gs2_auth_client.control.LoginRequest.LoginRequest
+        :return: 結果
+        :rtype: gs2_auth_client.control.LoginResult.LoginResult
+        """
+        body = { 
+            "serviceId": request.get_service_id(),
+            "userId": request.get_user_id(),
+        }
+
+        headers = { 
+        }
+        from gs2_auth_client.control.LoginRequest import LoginRequest
+
+        from gs2_auth_client.control.LoginResult import LoginResult
+        return LoginResult(self._do_post_request(
+            url=Gs2Constant.ENDPOINT_HOST + "/login",
+            service=self.ENDPOINT,
+            module=LoginRequest.Constant.MODULE,
+            function=LoginRequest.Constant.FUNCTION,
+            body=body,
+            headers=headers
+        ))
+
+
+
+
     def login_with_sign(self, request):
         """
         GS2-Accountの認証署名付きログイン処理を実行します<br>
@@ -126,37 +157,6 @@ class Gs2AuthClient(AbstractGs2Client):
             service=self.ENDPOINT,
             module=LoginWithSignRequest.Constant.MODULE,
             function=LoginWithSignRequest.Constant.FUNCTION,
-            body=body,
-            headers=headers
-        ))
-
-
-
-
-    def create_time_onetime_token(self, request):
-        """
-        1回のみ実行を許可するワンタイムトークンを発行します<br>
-        このトークンはスタミナの回復処理など、有効期間内だからといって何度も実行されたくない処理を1度だけ許可したい場合に発行します。<br>
-        <br>
-        :param request: リクエストパラメータ
-        :type request: gs2_auth_client.control.CreateTimeOnetimeTokenRequest.CreateTimeOnetimeTokenRequest
-        :return: 結果
-        :rtype: gs2_auth_client.control.CreateTimeOnetimeTokenResult.CreateTimeOnetimeTokenResult
-        """
-        body = { 
-            "scriptName": request.get_script_name(),
-        }
-
-        headers = { 
-        }
-        from gs2_auth_client.control.CreateTimeOnetimeTokenRequest import CreateTimeOnetimeTokenRequest
-
-        from gs2_auth_client.control.CreateTimeOnetimeTokenResult import CreateTimeOnetimeTokenResult
-        return CreateTimeOnetimeTokenResult(self._do_post_request(
-            url=Gs2Constant.ENDPOINT_HOST + "/onetime/time/token",
-            service=self.ENDPOINT,
-            module=CreateTimeOnetimeTokenRequest.Constant.MODULE,
-            function=CreateTimeOnetimeTokenRequest.Constant.FUNCTION,
             body=body,
             headers=headers
         ))

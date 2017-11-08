@@ -55,8 +55,6 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param service_id: ログインするサービスID
         :type service_id: unicode
         """
-        if not isinstance(service_id, unicode):
-            raise TypeError(type(service_id))
         self.__service_id = service_id
 
     def with_service_id(self, service_id):
@@ -84,8 +82,6 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param user_id: ログインするユーザのIDを指定してください
         :type user_id: unicode
         """
-        if not isinstance(user_id, unicode):
-            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -113,8 +109,6 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param key_name: GS2-Accountの認証署名の作成に使用した GS2-Key の暗号鍵名
         :type key_name: unicode
         """
-        if not isinstance(key_name, unicode):
-            raise TypeError(type(key_name))
         self.__key_name = key_name
 
     def with_key_name(self, key_name):
@@ -142,8 +136,6 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param sign: GS2-Accountの認証署名
         :type sign: unicode
         """
-        if not isinstance(sign, unicode):
-            raise TypeError(type(sign))
         self.__sign = sign
 
     def with_sign(self, sign):

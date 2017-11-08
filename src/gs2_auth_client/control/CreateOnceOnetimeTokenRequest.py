@@ -53,8 +53,6 @@ class CreateOnceOnetimeTokenRequest(Gs2BasicRequest):
         :param script_name: 認可処理に実行するスクリプト
         :type script_name: unicode
         """
-        if not isinstance(script_name, unicode):
-            raise TypeError(type(script_name))
         self.__script_name = script_name
 
     def with_script_name(self, script_name):
@@ -82,8 +80,6 @@ class CreateOnceOnetimeTokenRequest(Gs2BasicRequest):
         :param args: grant で指定したアクションに引数として渡すことを許可する内容
         :type args: dict
         """
-        if not isinstance(args, dict):
-            raise TypeError(type(args))
         self.__args = args
 
     def with_args(self, args):
@@ -111,8 +107,6 @@ class CreateOnceOnetimeTokenRequest(Gs2BasicRequest):
         :param grant: 認可するアクション
         :type grant: unicode
         """
-        if not isinstance(grant, unicode):
-            raise TypeError(type(grant))
         self.__grant = grant
 
     def with_grant(self, grant):
