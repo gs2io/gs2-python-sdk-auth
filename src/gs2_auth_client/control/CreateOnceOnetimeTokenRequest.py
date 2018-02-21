@@ -32,12 +32,12 @@ class CreateOnceOnetimeTokenRequest(Gs2BasicRequest):
         super(CreateOnceOnetimeTokenRequest, self).__init__(params)
         if params is None:
             self.__script_name = None
-            self.__args = None
             self.__grant = None
+            self.__args = None
         else:
             self.set_script_name(params['scriptName'] if 'scriptName' in params.keys() else None)
-            self.set_args(params['args'] if 'args' in params.keys() else None)
             self.set_grant(params['grant'] if 'grant' in params.keys() else None)
+            self.set_args(params['args'] if 'args' in params.keys() else None)
 
     def get_script_name(self):
         """
@@ -66,33 +66,6 @@ class CreateOnceOnetimeTokenRequest(Gs2BasicRequest):
         self.set_script_name(script_name)
         return self
 
-    def get_args(self):
-        """
-        grant で指定したアクションに引数として渡すことを許可する内容を取得
-        :return: grant で指定したアクションに引数として渡すことを許可する内容
-        :rtype: dict
-        """
-        return self.__args
-
-    def set_args(self, args):
-        """
-        grant で指定したアクションに引数として渡すことを許可する内容を設定
-        :param args: grant で指定したアクションに引数として渡すことを許可する内容
-        :type args: dict
-        """
-        self.__args = args
-
-    def with_args(self, args):
-        """
-        grant で指定したアクションに引数として渡すことを許可する内容を設定
-        :param args: grant で指定したアクションに引数として渡すことを許可する内容
-        :type args: dict
-        :return: this
-        :rtype: CreateOnceOnetimeTokenRequest
-        """
-        self.set_args(args)
-        return self
-
     def get_grant(self):
         """
         認可するアクションを取得
@@ -118,4 +91,31 @@ class CreateOnceOnetimeTokenRequest(Gs2BasicRequest):
         :rtype: CreateOnceOnetimeTokenRequest
         """
         self.set_grant(grant)
+        return self
+
+    def get_args(self):
+        """
+        grant で指定したアクションに引数として渡すことを許可する内容を取得
+        :return: grant で指定したアクションに引数として渡すことを許可する内容
+        :rtype: dict
+        """
+        return self.__args
+
+    def set_args(self, args):
+        """
+        grant で指定したアクションに引数として渡すことを許可する内容を設定
+        :param args: grant で指定したアクションに引数として渡すことを許可する内容
+        :type args: dict
+        """
+        self.__args = args
+
+    def with_args(self, args):
+        """
+        grant で指定したアクションに引数として渡すことを許可する内容を設定
+        :param args: grant で指定したアクションに引数として渡すことを許可する内容
+        :type args: dict
+        :return: this
+        :rtype: CreateOnceOnetimeTokenRequest
+        """
+        self.set_args(args)
         return self
