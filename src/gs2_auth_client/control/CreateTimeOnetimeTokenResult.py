@@ -25,9 +25,7 @@ class CreateTimeOnetimeTokenResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__token = unicode(response['token']) if 'token' in response.keys() and response['token'] is not None else None
-        
         self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
 
     def get_token(self):
@@ -52,9 +50,7 @@ class CreateTimeOnetimeTokenResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'token': self.__token,
-        
             'expire': self.__expire,
-        
         }

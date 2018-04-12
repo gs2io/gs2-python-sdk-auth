@@ -25,7 +25,6 @@ class CreateOnceOnetimeTokenResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__token = unicode(response['token']) if 'token' in response.keys() and response['token'] is not None else None
 
     def get_token(self):
@@ -42,7 +41,6 @@ class CreateOnceOnetimeTokenResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'token': self.__token,
-        
         }

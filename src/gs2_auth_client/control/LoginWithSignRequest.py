@@ -32,13 +32,19 @@ class LoginWithSignRequest(Gs2BasicRequest):
         super(LoginWithSignRequest, self).__init__(params)
         if params is None:
             self.__service_id = None
-            self.__user_id = None
-            self.__key_name = None
-            self.__sign = None
         else:
             self.set_service_id(params['serviceId'] if 'serviceId' in params.keys() else None)
+        if params is None:
+            self.__user_id = None
+        else:
             self.set_user_id(params['userId'] if 'userId' in params.keys() else None)
+        if params is None:
+            self.__key_name = None
+        else:
             self.set_key_name(params['keyName'] if 'keyName' in params.keys() else None)
+        if params is None:
+            self.__sign = None
+        else:
             self.set_sign(params['sign'] if 'sign' in params.keys() else None)
 
     def get_service_id(self):
@@ -55,6 +61,8 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param service_id: ログインするサービスID
         :type service_id: unicode
         """
+        if not isinstance(service_id, unicode):
+            raise TypeError(type(service_id))
         self.__service_id = service_id
 
     def with_service_id(self, service_id):
@@ -82,6 +90,8 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param user_id: ログインするユーザのIDを指定してください
         :type user_id: unicode
         """
+        if not isinstance(user_id, unicode):
+            raise TypeError(type(user_id))
         self.__user_id = user_id
 
     def with_user_id(self, user_id):
@@ -109,6 +119,8 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param key_name: GS2-Accountの認証署名の作成に使用した GS2-Key の暗号鍵名
         :type key_name: unicode
         """
+        if not isinstance(key_name, unicode):
+            raise TypeError(type(key_name))
         self.__key_name = key_name
 
     def with_key_name(self, key_name):
@@ -136,6 +148,8 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param sign: GS2-Accountの認証署名
         :type sign: unicode
         """
+        if not isinstance(sign, unicode):
+            raise TypeError(type(sign))
         self.__sign = sign
 
     def with_sign(self, sign):

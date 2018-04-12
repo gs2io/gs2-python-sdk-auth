@@ -14,8 +14,6 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-import json
-
 from gs2_core_client.Gs2Constant import Gs2Constant
 from gs2_core_client.AbstractGs2Client import AbstractGs2Client
 
@@ -33,7 +31,6 @@ class Gs2AuthClient(AbstractGs2Client):
         :type region: str
         """
         super(Gs2AuthClient, self).__init__(credential, region)
-
 
     def create_once_onetime_token(self, request):
         """
@@ -57,19 +54,15 @@ class Gs2AuthClient(AbstractGs2Client):
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.CreateOnceOnetimeTokenRequest import CreateOnceOnetimeTokenRequest
-
         from gs2_auth_client.control.CreateOnceOnetimeTokenResult import CreateOnceOnetimeTokenResult
         return CreateOnceOnetimeTokenResult(self._do_post_request(
             url=Gs2Constant.ENDPOINT_HOST + "/onetime/once/token",
             service=self.ENDPOINT,
-            module=CreateOnceOnetimeTokenRequest.Constant.MODULE,
-            function=CreateOnceOnetimeTokenRequest.Constant.FUNCTION,
+            component=CreateOnceOnetimeTokenRequest.Constant.MODULE,
+            target_function=CreateOnceOnetimeTokenRequest.Constant.FUNCTION,
             body=body,
             headers=headers
         ))
-
-
-
 
     def create_time_onetime_token(self, request):
         """
@@ -90,19 +83,15 @@ class Gs2AuthClient(AbstractGs2Client):
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.CreateTimeOnetimeTokenRequest import CreateTimeOnetimeTokenRequest
-
         from gs2_auth_client.control.CreateTimeOnetimeTokenResult import CreateTimeOnetimeTokenResult
         return CreateTimeOnetimeTokenResult(self._do_post_request(
             url=Gs2Constant.ENDPOINT_HOST + "/onetime/time/token",
             service=self.ENDPOINT,
-            module=CreateTimeOnetimeTokenRequest.Constant.MODULE,
-            function=CreateTimeOnetimeTokenRequest.Constant.FUNCTION,
+            component=CreateTimeOnetimeTokenRequest.Constant.MODULE,
+            target_function=CreateTimeOnetimeTokenRequest.Constant.FUNCTION,
             body=body,
             headers=headers
         ))
-
-
-
 
     def login(self, request):
         """
@@ -123,19 +112,15 @@ class Gs2AuthClient(AbstractGs2Client):
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.LoginRequest import LoginRequest
-
         from gs2_auth_client.control.LoginResult import LoginResult
         return LoginResult(self._do_post_request(
             url=Gs2Constant.ENDPOINT_HOST + "/login",
             service=self.ENDPOINT,
-            module=LoginRequest.Constant.MODULE,
-            function=LoginRequest.Constant.FUNCTION,
+            component=LoginRequest.Constant.MODULE,
+            target_function=LoginRequest.Constant.FUNCTION,
             body=body,
             headers=headers
         ))
-
-
-
 
     def login_with_sign(self, request):
         """
@@ -158,15 +143,12 @@ class Gs2AuthClient(AbstractGs2Client):
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.LoginWithSignRequest import LoginWithSignRequest
-
         from gs2_auth_client.control.LoginWithSignResult import LoginWithSignResult
         return LoginWithSignResult(self._do_post_request(
             url=Gs2Constant.ENDPOINT_HOST + "/login/signed",
             service=self.ENDPOINT,
-            module=LoginWithSignRequest.Constant.MODULE,
-            function=LoginWithSignRequest.Constant.FUNCTION,
+            component=LoginWithSignRequest.Constant.MODULE,
+            target_function=LoginWithSignRequest.Constant.FUNCTION,
             body=body,
             headers=headers
         ))
-
-

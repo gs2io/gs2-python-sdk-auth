@@ -25,13 +25,9 @@ class LoginResult(object):
         :type response: レスポンスボディ
         :type response: dict
         """
-        
         self.__token = unicode(response['token']) if 'token' in response.keys() and response['token'] is not None else None
-        
         self.__service_id = unicode(response['serviceId']) if 'serviceId' in response.keys() and response['serviceId'] is not None else None
-        
         self.__user_id = unicode(response['userId']) if 'userId' in response.keys() and response['userId'] is not None else None
-        
         self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
 
     def get_token(self):
@@ -72,13 +68,9 @@ class LoginResult(object):
         :return: 辞書配列
         :rtype: dict
         """
-        return { 
+        return {
             'token': self.__token,
-        
             'serviceId': self.__service_id,
-        
             'userId': self.__user_id,
-        
             'expire': self.__expire,
-        
         }
