@@ -53,7 +53,7 @@ class LoginRequest(Gs2BasicRequest):
         :param service_id: ログインするサービスID
         :type service_id: unicode
         """
-        if service_id and not isinstance(service_id, unicode):
+        if service_id and not (isinstance(service_id, str) or isinstance(service_id, unicode)):
             raise TypeError(type(service_id))
         self.__service_id = service_id
 
@@ -82,7 +82,7 @@ class LoginRequest(Gs2BasicRequest):
         :param user_id: ログインするユーザのID
         :type user_id: unicode
         """
-        if user_id and not isinstance(user_id, unicode):
+        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
