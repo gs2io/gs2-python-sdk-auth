@@ -27,7 +27,6 @@ class CreateTimeOnetimeTokenResult(object):
         """
         self.__token = unicode(response['token']) if 'token' in response.keys() and response['token'] is not None else None
         self.__expire = int(response['expire']) if 'expire' in response.keys() and response['expire'] is not None else None
-
     def get_token(self):
         """
         アクセストークンを取得
@@ -35,7 +34,6 @@ class CreateTimeOnetimeTokenResult(object):
         :rtype: unicode
         """
         return self.__token
-
     def get_expire(self):
         """
         アクセストークンの有効期限を取得
@@ -43,6 +41,12 @@ class CreateTimeOnetimeTokenResult(object):
         :rtype: int
         """
         return self.__expire
+
+    def __getitem__(self, key):
+        items = self.to_dict()
+        if key in items.keys():
+            return items[key]
+        return super(CreateTimeOnetimeTokenResult, self).__getitem__(key)
 
     def to_dict(self):
         """
