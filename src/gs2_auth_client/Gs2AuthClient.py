@@ -44,14 +44,11 @@ class Gs2AuthClient(AbstractGs2Client):
         """
         body = { 
             "scriptName": request.get_script_name(),
+            "grant": request.get_grant(),
+            "args": request.get_args(),
         }
 
-        if request.get_grant() is not None:
-            body["grant"] = request.get_grant()
-        if request.get_args() is not None:
-            body["args"] = request.get_args()
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.CreateOnceOnetimeTokenRequest import CreateOnceOnetimeTokenRequest
@@ -79,8 +76,7 @@ class Gs2AuthClient(AbstractGs2Client):
             "scriptName": request.get_script_name(),
         }
 
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.CreateTimeOnetimeTokenRequest import CreateTimeOnetimeTokenRequest
@@ -108,8 +104,7 @@ class Gs2AuthClient(AbstractGs2Client):
             "userId": request.get_user_id(),
         }
 
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.LoginRequest import LoginRequest
@@ -139,8 +134,7 @@ class Gs2AuthClient(AbstractGs2Client):
             "sign": request.get_sign(),
         }
 
-        headers = { 
-        }
+        headers = {}
         if request.get_request_id() is not None:
             headers["X-GS2-REQUEST-ID"] = request.get_request_id()
         from gs2_auth_client.control.LoginWithSignRequest import LoginWithSignRequest

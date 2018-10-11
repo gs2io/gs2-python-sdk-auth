@@ -61,7 +61,7 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param service_id: ログインするサービスID
         :type service_id: unicode
         """
-        if service_id and not (isinstance(service_id, str) or isinstance(service_id, unicode)):
+        if service_id is not None and not (isinstance(service_id, str) or isinstance(service_id, unicode)):
             raise TypeError(type(service_id))
         self.__service_id = service_id
 
@@ -90,7 +90,7 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param user_id: ログインするユーザのIDを指定してください
         :type user_id: unicode
         """
-        if user_id and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
+        if user_id is not None and not (isinstance(user_id, str) or isinstance(user_id, unicode)):
             raise TypeError(type(user_id))
         self.__user_id = user_id
 
@@ -119,7 +119,7 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param key_name: GS2-Accountの認証署名の作成に使用した GS2-Key の暗号鍵名
         :type key_name: unicode
         """
-        if key_name and not (isinstance(key_name, str) or isinstance(key_name, unicode)):
+        if key_name is not None and not (isinstance(key_name, str) or isinstance(key_name, unicode)):
             raise TypeError(type(key_name))
         self.__key_name = key_name
 
@@ -148,7 +148,7 @@ class LoginWithSignRequest(Gs2BasicRequest):
         :param sign: GS2-Accountの認証署名
         :type sign: unicode
         """
-        if sign and not (isinstance(sign, str) or isinstance(sign, unicode)):
+        if sign is not None and not (isinstance(sign, str) or isinstance(sign, unicode)):
             raise TypeError(type(sign))
         self.__sign = sign
 
